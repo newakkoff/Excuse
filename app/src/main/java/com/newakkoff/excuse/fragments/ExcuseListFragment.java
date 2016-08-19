@@ -17,4 +17,5 @@ public class ExcuseListFragment extends Fragment {
 
         return rootView;
     }
+
 }

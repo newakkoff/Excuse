@@ -13,4 +13,8 @@ public class ExcuseListActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         return new ExcuseListFragment();
     }
+
+    @Override
+    public void onBackPressed() {
+    }
 }
