@@ -3,7 +3,6 @@ package com.newakkoff.excuse.fragments;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.newakkoff.excuse.R;
-import com.newakkoff.excuse.activities.ExcuseListActivity;
 
 import java.util.concurrent.TimeUnit;
 
