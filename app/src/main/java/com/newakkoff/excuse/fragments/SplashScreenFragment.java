@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.newakkoff.excuse.R;
+import com.newakkoff.excuse.activities.ExcuseListActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,7 +41,7 @@ public class SplashScreenFragment extends Fragment {
                 Log.e(TAG, e + " ");
             }
 
-            startActivity(new Intent(getActivity(), ExcuseListActivity.class));
+//            startActivity(new Intent(getActivity(), ExcuseListActivity.class));
 
             return null;
         }
