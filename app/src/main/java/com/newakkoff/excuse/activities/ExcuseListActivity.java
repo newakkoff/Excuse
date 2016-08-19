@@ -8,6 +8,7 @@ import com.newakkoff.excuse.fragments.ExcuseListFragment;
  * Created by Фахош on 19.08.2016.
  */
 public class ExcuseListActivity extends SingleFragmentActivity {
+
     @Override
     protected Fragment createFragment() {
         return new ExcuseListFragment();

@@ -1,7 +1,5 @@
 package com.newakkoff.excuse.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,7 +13,8 @@ public class ExcuseListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_excuse_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_excuse_list, container, false);
+
+        return rootView;
     }
 }

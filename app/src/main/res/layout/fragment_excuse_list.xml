@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.newakkoff.excuse.fragments.ExcuseListFragment">
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="COMING SOON"
+    />
 
 
 </FrameLayout>

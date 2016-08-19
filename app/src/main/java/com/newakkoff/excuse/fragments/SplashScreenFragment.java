@@ -3,6 +3,7 @@ package com.newakkoff.excuse.fragments;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.BoolRes;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,15 +17,16 @@ import java.util.concurrent.TimeUnit;
 
 
 public class SplashScreenFragment extends Fragment {
-    String TAG = "SplashScreen Exception";
-
+    private String TAG = "SplashScreen Exception";
+    private boolean showSplashScreen = true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_splash_screen, container, false);
 
-        SplashTask splashTask = new SplashTask();
-        splashTask.execute();
+        if (showSplashScreen) {
+            new SplashTask().execute();
+        }
 
         return view;
     }
@@ -40,10 +42,12 @@ public class SplashScreenFragment extends Fragment {
             } catch (InterruptedException e) {
                 Log.e(TAG, e + " ");
             }
-
-//            startActivity(new Intent(getActivity(), ExcuseListActivity.class));
-
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            startActivity(new Intent(getActivity(), ExcuseListActivity.class));
         }
     }
 }
