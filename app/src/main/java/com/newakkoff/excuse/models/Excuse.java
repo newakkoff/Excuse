@@ -8,6 +8,9 @@ public class Excuse {
     private String excuseUserName;
     private String excuseMassage;
 
+    public Excuse() {
+    }
+
     public Excuse(Long id, String excuseUserName, String excuseMassage) {
         this.id = id;
         this.excuseUserName = excuseUserName;
