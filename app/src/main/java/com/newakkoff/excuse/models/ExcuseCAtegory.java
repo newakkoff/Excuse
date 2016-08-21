@@ -3,16 +3,16 @@ package com.newakkoff.excuse.models;
 /**
  * Created by Фахош on 19.08.2016.
  */
-public class ExcuseCategoriesList  {
+public class ExcuseCategory {
 
     private Long id;
     private String categoryName;
     private String categoryDescription;
 
-    public ExcuseCategoriesList() {
+    public ExcuseCategory() {
     }
 
-    public ExcuseCategoriesList(Long id, String categoryName, String categoryDescription) {
+    public ExcuseCategory(Long id, String categoryName, String categoryDescription) {
         this.id = id;
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;

@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.newakkoff.excuse.fragments.ExcuseListFragment">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="COMING SOON"
-    />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/excuse_categories_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </FrameLayout>
