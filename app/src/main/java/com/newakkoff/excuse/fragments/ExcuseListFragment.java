@@ -13,24 +13,15 @@ import android.widget.TextView;
 
 import com.newakkoff.excuse.R;
 import com.newakkoff.excuse.models.ExcuseCategory;
-import com.newakkoff.excuse.tasks.ExcuseCategoryInterface;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.ArrayList;
 
 
 public class ExcuseListFragment extends Fragment {
 
+    private static final String TAG = " sExcuseListFragment";
     private RecyclerView excuseCategoriesRecyclerView;
-    private List<ExcuseCategory> excuseCategoryList;
-    private Retrofit retrofit;
-    private String BASE_URL = "http://10.0.2.2:8080";
-    private ExcuseCategoryInterface excuseCategoryInterface;
+    private ArrayList<ExcuseCategory> excuseCategoryList;
 
 
     @Override
@@ -38,26 +29,13 @@ public class ExcuseListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_excuse_categories_list, container, false);
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        excuseCategoryList = getActivity().getIntent().getParcelableArrayListExtra("allCategories");
 
-        excuseCategoryInterface = retrofit.create(ExcuseCategoryInterface.class);
-
-        Call<List<ExcuseCategory>> getCategoryList = excuseCategoryInterface.getAllExcuseCategories();
-
-        getCategoryList.enqueue(new Callback<List<ExcuseCategory>>() {
-            @Override
-            public void onResponse(Call<List<ExcuseCategory>> call, Response<List<ExcuseCategory>> response) {
-                excuseCategoryList = response.body();
+        if (excuseCategoryList != null) {
+            for (ExcuseCategory category : excuseCategoryList) {
+                Log.i(TAG, "onCreateView: " + category.getCategoryName());
             }
-
-            @Override
-            public void onFailure(Call<List<ExcuseCategory>> call, Throwable t) {
-                Log.i("RETROFIT", "Failure");
-            }
-        });
+        }
 
         ExcuseCategoriesAdapter excuseCategoriesAdapter = new ExcuseCategoriesAdapter();
 

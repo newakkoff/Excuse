@@ -2,7 +2,7 @@ package com.newakkoff.excuse.tasks;
 
 import com.newakkoff.excuse.models.ExcuseCategory;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,5 +13,5 @@ import retrofit2.http.GET;
 public interface ExcuseCategoryInterface {
 
     @GET("/allexcusecategory")
-    Call<List<ExcuseCategory>> getAllExcuseCategories();
+    Call<ArrayList<ExcuseCategory>> getAllExcuseCategories();
 }
