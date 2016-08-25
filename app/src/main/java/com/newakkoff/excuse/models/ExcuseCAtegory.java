@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 import javax.annotation.Generated;
 
 /**
@@ -13,17 +15,39 @@ import javax.annotation.Generated;
  */
 @Generated("org.jsonschema2pojo")
 public class ExcuseCategory implements Parcelable {
+
     @SerializedName("id")
     @Expose
     private String id;
-
     @SerializedName("categoryName")
     @Expose
     private String categoryName;
-
     @SerializedName("categoryDescription")
     @Expose
     private String categoryDescription;
+    @SerializedName("allExcuses")
+    @Expose
+    private List<Excuse> allExcuses;
+
+    public static final Parcelable.Creator<ExcuseCategory> CREATOR = new Creator<ExcuseCategory>() {
+
+        @Override
+        public ExcuseCategory createFromParcel(Parcel source) {
+            return new ExcuseCategory(source);
+        }
+
+        @Override
+        public ExcuseCategory[] newArray(int size) {
+            return new ExcuseCategory[size];
+        }
+    };
+
+    public ExcuseCategory(Parcel in) {
+        setId(in.readString());
+        setCategoryName(in.readString());
+        setCategoryDescription(in.readString());
+        setAllExcuses(in.createTypedArrayList(Excuse.CREATOR));
+    }
 
     /**
      * @return The id
@@ -67,10 +91,18 @@ public class ExcuseCategory implements Parcelable {
         this.categoryDescription = categoryDescription;
     }
 
-    public ExcuseCategory(Parcel in) {
-        setId(in.readString());
-        setCategoryName(in.readString());
-        setCategoryDescription(in.readString());
+    /**
+     * @return The allExcuses
+     */
+    public List<Excuse> getAllExcuses() {
+        return allExcuses;
+    }
+
+    /**
+     * @param allExcuses The allExcuses
+     */
+    public void setAllExcuses(List<Excuse> allExcuses) {
+        this.allExcuses = allExcuses;
     }
 
     @Override
@@ -83,16 +115,6 @@ public class ExcuseCategory implements Parcelable {
         dest.writeString(getId());
         dest.writeString(getCategoryName());
         dest.writeString(getCategoryDescription());
-    }
-    public static final Parcelable.Creator<ExcuseCategory> CREATOR = new Creator<ExcuseCategory>() {
-        @Override
-        public ExcuseCategory createFromParcel(Parcel source) {
-            return new ExcuseCategory(source);
-        }
-
-        @Override
-        public ExcuseCategory[] newArray(int size) {
-            return new ExcuseCategory[size];
-        }
-    };
+        dest.writeTypedList(getAllExcuses());
+     }
 }

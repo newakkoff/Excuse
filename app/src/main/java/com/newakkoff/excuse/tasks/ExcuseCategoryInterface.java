@@ -12,6 +12,6 @@ import retrofit2.http.GET;
  */
 public interface ExcuseCategoryInterface {
 
-    @GET("/allexcusecategory")
+    @GET("/ExcuseCategory/getAllExcuseCategories")
     Call<ArrayList<ExcuseCategory>> getAllExcuseCategories();
 }

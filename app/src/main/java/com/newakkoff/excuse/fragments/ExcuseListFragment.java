@@ -12,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.newakkoff.excuse.R;
+import com.newakkoff.excuse.models.Excuse;
 import com.newakkoff.excuse.models.ExcuseCategory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ExcuseListFragment extends Fragment {
@@ -22,6 +24,8 @@ public class ExcuseListFragment extends Fragment {
     private static final String TAG = " sExcuseListFragment";
     private RecyclerView excuseCategoriesRecyclerView;
     private ArrayList<ExcuseCategory> excuseCategoryList;
+    private List<Excuse> excuseList;
+
 
 
     @Override
@@ -30,18 +34,14 @@ public class ExcuseListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_excuse_categories_list, container, false);
 
         excuseCategoryList = getActivity().getIntent().getParcelableArrayListExtra("allCategories");
-
         if (excuseCategoryList != null) {
-            for (ExcuseCategory category : excuseCategoryList) {
-                Log.i(TAG, "onCreateView: " + category.getCategoryName());
+            for (ExcuseCategory categ : excuseCategoryList) {
+                Log.i(TAG, "onCreateView: "+ categ.getCategoryName());
             }
         }
-
-        ExcuseCategoriesAdapter excuseCategoriesAdapter = new ExcuseCategoriesAdapter();
-
         excuseCategoriesRecyclerView = (RecyclerView) rootView.findViewById(R.id.excuse_categories_recycler_view);
         excuseCategoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        excuseCategoriesRecyclerView.setAdapter(excuseCategoriesAdapter);
+        excuseCategoriesRecyclerView.setAdapter(new ExcuseCategoriesAdapter());
 
         return rootView;
     }

@@ -42,7 +42,6 @@ public class SplashScreenFragment extends Fragment {
     }
 
 
-
     class SplashTask extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -57,13 +56,15 @@ public class SplashScreenFragment extends Fragment {
             Call<ArrayList<ExcuseCategory>> getCategoryList = excuseCategoryInterface.getAllExcuseCategories();
 
             try {
-                excuseCategoryList =  getCategoryList.execute().body();
+                excuseCategoryList = getCategoryList.execute().body();
             } catch (IOException e) {
 
-                Log.i(TAG, "doInBackground: IOExeption" + e);
+                Log.i(TAG, "doInBackground: IOException" + e);
             }
+
             return null;
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
 
