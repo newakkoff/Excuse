@@ -2,10 +2,11 @@ package com.newakkoff.excuse.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,31 +20,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ExcuseListFragment extends Fragment {
+public class ExcuseCategoriesListFragment extends Fragment {
 
-    private static final String TAG = " sExcuseListFragment";
+    private static final String TAG = "ExcuseCategoriesListFragment";
     private RecyclerView excuseCategoriesRecyclerView;
     private ArrayList<ExcuseCategory> excuseCategoryList;
     private List<Excuse> excuseList;
-
-
+    private Toolbar toolbar;
+    private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_excuse_categories_list, container, false);
+         rootView = inflater.inflate(R.layout.fragment_excuse_categories_list, container, false);
 
+        onToolbarCreated();
+        onRecyclerCreate();
+
+        return rootView;
+    }
+
+    private void onToolbarCreated() {
+        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        toolbar.setTitle(R.string.category_choice_text);
+    }
+
+    private void onRecyclerCreate() {
         excuseCategoryList = getActivity().getIntent().getParcelableArrayListExtra("allCategories");
-        if (excuseCategoryList != null) {
-            for (ExcuseCategory categ : excuseCategoryList) {
-                Log.i(TAG, "onCreateView: "+ categ.getCategoryName());
-            }
-        }
         excuseCategoriesRecyclerView = (RecyclerView) rootView.findViewById(R.id.excuse_categories_recycler_view);
         excuseCategoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         excuseCategoriesRecyclerView.setAdapter(new ExcuseCategoriesAdapter());
-
-        return rootView;
     }
 
 

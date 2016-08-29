@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.ExcuseCategoriesActivity" />
         <activity android:name=".activities.ExcuseListActivity"></activity>
     </application>
 

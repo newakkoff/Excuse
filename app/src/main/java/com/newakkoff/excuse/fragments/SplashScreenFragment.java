@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.newakkoff.excuse.R;
-import com.newakkoff.excuse.activities.ExcuseListActivity;
+import com.newakkoff.excuse.activities.ExcuseCategoriesActivity;
 import com.newakkoff.excuse.models.ExcuseCategory;
 import com.newakkoff.excuse.tasks.ExcuseCategoryInterface;
 
@@ -68,7 +68,7 @@ public class SplashScreenFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
 
-            Intent intent = new Intent(getActivity(), ExcuseListActivity.class);
+            Intent intent = new Intent(getActivity(), ExcuseCategoriesActivity.class);
             if (excuseCategoryList != null) {
                 intent.putParcelableArrayListExtra("allCategories", excuseCategoryList);
             } else {
